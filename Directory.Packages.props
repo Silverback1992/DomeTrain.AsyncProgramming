@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AsyncAwaitBestPractices.MVVM" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="11.0.10" />
+    <PackageVersion Include="CommunityToolkit.Maui" Version="17.0.0" />
+    <PackageVersion Include="CommunityToolkit.Maui.Markup" Version="9.0.0" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="17.0.0" />
+  </ItemGroup>
+</Project>

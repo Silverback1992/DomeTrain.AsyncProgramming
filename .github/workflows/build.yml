@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches: 
+      - "*"
+env:
+  Xcode_Version: '^27'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  BuildAsyncAwaitBestPractices:
+    runs-on: xcode-27
+    steps:
+    - uses: actions/checkout@v6
+
+    # Install .NET SDK
+    - name: Setup .NET 11.0.x
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: '11.x' # Adjust to your required .NET SDK version
+
+    - name: Install .NET MAUI
+      run: |
+        dotnet workload install maui
+        dotnet workload update
+
+    - name: Install Xcode
+      if: runner.os == 'macOS'
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: ${{ env.Xcode_Version }}
+
+    - name: Display .NET Info
+      run: 'dotnet --info'
+
+    - name: Build "Async Await Best Practices"
+      run: dotnet build -c Release "./5. Async Await Best Practices/src" 
