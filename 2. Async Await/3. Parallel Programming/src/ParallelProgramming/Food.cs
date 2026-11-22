@@ -1,23 +1,23 @@
-namespace ParallelProgramming;
+﻿namespace ParallelProgramming;
 
 public abstract class Food
 {
-	readonly TimeSpan _cookTime;
+    readonly TimeSpan _cookTime;
 
-	protected Food(TimeSpan cookTime)
-	{
-		_cookTime = cookTime;
-		Name = GetType().Name;
-	}
+    protected Food(TimeSpan cookTime)
+    {
+        _cookTime = cookTime;
+        Name = GetType().Name;
+    }
 
-	public string Name { get; }
+    public string Name { get; }
 
-	public async Task Cook()
-	{
-		Console.WriteLine($"Cooking {Name}");
-		await Task.Delay(_cookTime);
-		Console.WriteLine($"{Name} Completed");
-	}
+    public async Task Cook()
+    {
+        Console.WriteLine($"Cooking {Name}");
+        await Task.Delay(_cookTime);
+        Console.WriteLine($"{Name} Completed");
+    }
 }
 
 public class Turkey() : Food(TimeSpan.FromSeconds(5));
